@@ -287,7 +287,7 @@ trainer.save_model("my_awesome_model/final_model")
 
 
 ```
-   ```python
+   ```bash
 
    Sentiment Negative 
 
