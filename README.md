@@ -66,11 +66,41 @@
     
     
      ```
-    ```python
-     transcription: tu es le chat falle tuer tuer  tues tuez
+    ```bash
+     transcription: tu es le chat falle tuer tuer   tues tuez
      
      ```
+     ```python
+     # chargement de plusieurs audio pour tester la qualite du modele ASR  
+     audio_paths=["/content/file.wav","/content/drive/MyDrive/common_voice_fr_17299384.wav"]
 
+    # Transcrire les fichiers audio
+    transcriptions = model.transcribe(audio_paths)
+
+    # Transcriptions générées par le modèle
+     hypotheses = [transcription['transcription'] for transcription in transcriptions]
+     ```
+   
+     ```bash
+    print(hypotheses):
+     ['je mappelle kemdal', 'faisant donc attention à utiliser les bons mauts']
+     ```
+     ```python
+    # Transcriptions de référence (attendues)
+     references = [
+    "je m'appelle kiemde alain",
+    "fesons donc attention a utiliserles bon mots"] 
+
+    # Charger le calculateur de WER depuis la bibliothèque evaluate
+    wer_metric = evaluate.load("wer")
+
+   # Calculer le WER
+   wer_score = wer_metric.compute(predictions=hypotheses, references=references)
+    ``` 
+    ```bash  
+    print(f"Word Error Rate (WER): {wer_score}"):
+    Word Error Rate (WER): 0.8181818181818182
+    ```
 
 
 
