@@ -322,3 +322,4 @@ trainer.save_model("my_awesome_model/final_model")
    Sentiment Negative 
 
 ```
+voici le [checkpoints du modèle finale sentiment ](https://drive.google.com/drive/folders/1PSKSyYnPMuAJXSxOJNEPJPQGeATTvXSg?usp=sharing). 
