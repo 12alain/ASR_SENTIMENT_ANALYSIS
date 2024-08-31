@@ -283,5 +283,4 @@ trainer.save_model("my_awesome_model/final_model")
         else:
             print("Sentiment: Positive")
 
-    ```
 
