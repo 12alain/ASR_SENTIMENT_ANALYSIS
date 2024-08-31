@@ -141,7 +141,7 @@ Dans cette partie, nous allons construire un modèle de classification de sentim
     ```
 
 
-4. Le training du modèle
+4. **Le training du modèle**
 
 - Nous utiliserons le code suivant pour le training du modèle :
 
