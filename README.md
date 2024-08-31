@@ -141,9 +141,9 @@ Dans cette partie, nous allons construire un modèle de classification de sentim
     ```
 
 
-### 2. Code pour le training du modèle
+4. Le training du modèle
 
-- Utilisez le code suivant pour classifier les transcriptions :
+- Nous utiliserons le code suivant pour le training du modèle :
 
 ```python
 # Importer les bibliothèques nécessaires
@@ -238,7 +238,8 @@ trainer.train()
             | 19000  | 0.114400      | 0.167135        | 0.954600 |
             | 20000  | 0.126300      | 0.167289        | 0.955150 |
 
-            TrainOutput(global_step=20000, training_loss=0.1291647247314453, metrics={'train_runtime': 18506.9733, 'train_samples_per_second': 17.291, 'train_steps_per_second': 1.081, 'total_flos': 7.550016133545792e+16, 'train_loss': 0.1291647247314453, 'epoch': 2.0})
+TrainOutput(global_step=20000, training_loss=0.1291647247314453, metrics={'train_runtime': 18506.9733, 'train_samples_per_second': 17.291, 'train_steps_per_second': 1.081, 'total_flos': 7.550016133545792e+16, 'train_loss': 0.1291647247314453, 'epoch': 2.0})
+```
 ```python
 # Préparation des données de test
 test_dataset = tokenized_imdb["test"]
@@ -256,6 +257,7 @@ test_results = trainer.evaluate(eval_dataset=test_dataset)
 ```python
 trainer.save_model("my_awesome_model/final_model")
 ```
+# 
     # Charge le modèle et le tokenizer depuis le répertoire sauvegardé
     model = AutoModelForSequenceClassification.from_pretrained("my_awesome_model/final_model")
     tokenizer = AutoTokenizer.from_pretrained("my_awesome_model/final_model")
