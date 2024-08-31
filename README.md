@@ -257,43 +257,34 @@ test_results = trainer.evaluate(eval_dataset=test_dataset)
 ```python
 trainer.save_model("my_awesome_model/final_model")
 ```
-# 
-    # Charge le modèle et le tokenizer depuis le répertoire sauvegardé
+#   Partie 3 : Modèle ASR+Modèle classification
+ ```python
+    # Chargement  du modèle et le tokenizer depuis le répertoire sauvegardé
     model = AutoModelForSequenceClassification.from_pretrained("my_awesome_model/final_model")
     tokenizer = AutoTokenizer.from_pretrained("my_awesome_model/final_model")
 
-    # 16. Tokenizer le texte pour la prédiction
-    transcription = "Votre texte ici"  # Remplacez par le texte à prédire
+    
+     # Récupération de la transcription faite en partie1
+    transcription = transcriptions [0]['transcription']
+    # Tokenizer le texte pour la prédiction
     inputs = tokenizer(transcription, return_tensors="pt")
 
-        # 17. Faire une prédiction
+        #  Faire une prédiction
         with torch.no_grad():  # Désactiver le calcul des gradients pour l'inférence
             outputs = model(**inputs)
 
-        # 18. Obtenir les logits et convertir en prédictions
+        # Obtenir les logits et convertir en prédictions
         logits = outputs.logits
         predictions = logits.argmax(dim=-1)
 
-        # 19. Afficher la prédiction
+        # Afficher la prédiction
         if predictions.item() == 0:
             print("Sentiment: Negative")
         else:
             print("Sentiment: Positive")
 
+    ```
 
 
-### 2. Synthèse et Résultats
 
-1. **Transcrire l'audio**
-   - Utilisez le modèle ASR `wav2vec2-large-xlsr-53-french` pour transcrire l'enregistrement audio fourni.
-
-2. **Analyser le sentiment**
-   - Passez la transcription obtenue à travers le modèle d'analyse de sentiment pour obtenir la classification positive ou négative.
-
-3. **Rapport**
-   - Présentez les résultats obtenus dans un rapport en expliquant les modèles utilisés, les résultats de la transcription, et les conclusions de l'analyse de sentiment.
-
----
-
-Assurez-vous de tester soigneusement chaque étape et de valider vos résultats pour garantir la précision des transcriptions et de l'analyse de sentiment. Bonne chance avec votre projet !
 ```
