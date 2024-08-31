@@ -284,3 +284,11 @@ trainer.save_model("my_awesome_model/final_model")
             print("Sentiment: Positive")
 
 
+
+
+```
+   ```python
+
+   Sentiment Negative 
+
+```
